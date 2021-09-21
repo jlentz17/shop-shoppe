@@ -3,12 +3,12 @@ import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { useStoreContext } from "../utils/GlobalState";
 import { UPDATE_PRODUCTS } from "../utils/actions";
-
 import { QUERY_PRODUCTS } from "../utils/queries";
 import spinner from "../assets/spinner.gif";
+import Cart from "../components/Cart";
 
 function Detail() {
-  const[state, dispatch] = useStoreContext
+  const [state, dispatch] = useStoreContext();
   const { id } = useParams();
 
   const [currentProduct, setCurrentProduct] = useState({});
@@ -23,8 +23,8 @@ function Detail() {
     } else if (data) {
       dispatch({
         type: UPDATE_PRODUCTS,
-        products: data.products
-      })
+        products: data.products,
+      });
     }
   }, [products, data, dispatch, id]);
 
@@ -51,6 +51,7 @@ function Detail() {
         </div>
       ) : null}
       {loading ? <img src={spinner} alt="loading" /> : null}
+      <Cart/>
     </>
   );
 }
