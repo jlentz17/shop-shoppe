@@ -18,10 +18,11 @@ const Cart = () => {
         <span
           role="img"
           aria-label="trash">🛒</span>
-      </div>
+      </div>     
+      
     );
   }
-  
+
   return (
     <div className="cart">
       <div className="close" onClick={toggleCart}>[close]</div>
